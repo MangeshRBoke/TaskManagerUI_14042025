@@ -1,0 +1,18 @@
+﻿@model List<TaskManagerUI.Models.TaskItem>
+<h2>Task List</h2>
+<a asp-action="Create">Add Task</a>
+<table class="table">
+    <tr><th>Title</th><th>Due Date</th><th>Complete</th><th>Actions</th></tr>
+    @foreach (var task in Model)
+    {
+        <tr>
+            <td>@task.Title</td>
+            <td>@task.DueDate?.ToShortDateString()</td>
+            <td>@task.IsComplete</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@task.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@task.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
